@@ -1,24 +1,8 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const AddProduct = () => {
-  const [title, setTitle] = useState('');
-  const [price, setPrice] = useState('');
-  const [promotion, setPromotion] = useState('');
-  const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const newProduct = { title, price, promotion };
-
-    axios.post('https://6657b1b55c3617052645998a.mockapi.io/products/products', newProduct)
-      .then(() => {
-        navigate('/');
-      })
-      .catch(error => console.error('There was an error creating the product!', error));
-  };
 
   return (
     <div className="container mt-5">

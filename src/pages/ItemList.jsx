@@ -1,23 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ItemList = () => {
-  const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    axios.get('https://6657b1b55c3617052645998a.mockapi.io/products/products')
-      .then(response => setProducts(response.data))
-      .catch(error => console.error('There was an error fetching the products!', error));
-  }, []);
-
-  const deleteProduct = (id) => {
-    axios.delete(`https://6657b1b55c3617052645998a.mockapi.io/products/products/${id}`)
-        //Atualiza o estado com um novo array com os produtos diferentes de id passado
-      .then(() => setProducts(products.filter(product => product.id !== id)))
-      .catch(error => console.error('There was an error deleting the product!', error));
-  };
 
   return (
     <div className="container mt-5">
