@@ -4,33 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const EditProduct = () => {
-  const { id } = useParams();
-  const [title, setTitle] = useState('');
-  const [price, setPrice] = useState('');
-  const [promotion, setPromotion] = useState('');
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    axios.get(`https://6657b1b55c3617052645998a.mockapi.io/products/products/${id}`)
-      .then(response => {
-        const product = response.data;
-        setTitle(product.title);
-        setPrice(product.price);
-        setPromotion(product.promotion);
-      })
-      .catch(error => console.error('There was an error fetching the product!', error));
-  }, [id]);
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const updatedProduct = { title, price, promotion };
-
-    axios.put(`https://6657b1b55c3617052645998a.mockapi.io/products/products/${id}`, updatedProduct)
-      .then(() => {
-        navigate('/');
-      })
-      .catch(error => console.error('There was an error updating the product!', error));
-  };
 
   return (
     <div className="container mt-5">
@@ -42,7 +16,7 @@ const EditProduct = () => {
             type="text"
             className="form-control"
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(event) => setTitle(event.target.value)}
             required
           />
         </div>
@@ -52,7 +26,7 @@ const EditProduct = () => {
             type="number"
             className="form-control"
             value={price}
-            onChange={(e) => setPrice(e.target.value)}
+            onChange={(event) => setPrice(event.target.value)}
             required
           />
         </div>
@@ -62,7 +36,7 @@ const EditProduct = () => {
             type="text"
             className="form-control"
             value={promotion}
-            onChange={(e) => setPromotion(e.target.value)}
+            onChange={(event) => setPromotion(event.target.value)}
           />
         </div>
         <button type="submit" className="btn btn-primary">Update Product</button>
