@@ -30,7 +30,7 @@ const AddProduct = () => {
             type="text"
             className="form-control"
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(event) => setTitle(event.target.value)}
             required
           />
         </div>
@@ -40,7 +40,7 @@ const AddProduct = () => {
             type="number"
             className="form-control"
             value={price}
-            onChange={(e) => setPrice(e.target.value)}
+            onChange={(event) => setPrice(event.target.value)}
             required
           />
         </div>
@@ -50,7 +50,7 @@ const AddProduct = () => {
             type="text"
             className="form-control"
             value={promotion}
-            onChange={(e) => setPromotion(e.target.value)}
+            onChange={(event) => setPromotion(event.target.value)}
           />
         </div>
         <button type="submit" className="btn btn-primary">Add Product</button>

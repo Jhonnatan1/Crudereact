@@ -21,8 +21,8 @@ const EditProduct = () => {
       .catch(error => console.error('There was an error fetching the product!', error));
   }, [id]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
     const updatedProduct = { title, price, promotion };
 
     axios.put(`https://6657b1b55c3617052645998a.mockapi.io/products/products/${id}`, updatedProduct)
