@@ -1,9 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import axios from'axios'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const ItemList = () => {
+const ItemList = () => {  
+  const [products,setProducts] = useState([])
 
+useEffect(() => {
+  axios.get('https://6657b1bb5c361705264599c0.mockapi.io/products/products').then( response => setProducts(response.data))
+  .catch(console.log("Internal server error"))
+},[])
+
+  function deleteProduct(id){
+    useEffect(() => {
+      axios.delete('https://6657b1bb5c361705264599c0.mockapi.io/products/products')
+      .then(() => setProducts(products.filter(product => product.id
+      !==id)))
+      .catch(console.log('Internal server error'))
+    },[]);
+    
+  }
 
   return (
     <div className="container mt-5">
